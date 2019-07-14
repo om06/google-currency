@@ -7,14 +7,14 @@ It can convert the currency of <b>153 codes.</b>
 Since the results are fetched from ``Google`` directly, you can trust the results :-D
 
 
-<h3>Installation</h3>
+#Installation
 
 To install the library run the below command (This will also install ``requests``)
 
 *  ``pip install google-currency``
 
 
-<h3>Usage</h3>
+#Usage
 ``from google_currency import convert``
 
 ``convert('usd', 'inr', 1)``
@@ -30,13 +30,13 @@ This will return a JSON response like below
 }
 
 
-<b>Response description</b>
+# Response description
 
-* <b>converted: </b> Boolean indicating whether the amount is converted or not, if this is ``false`` than it means the
+* converted: Boolean indicating whether the amount is converted or not, if this is ``false`` than it means the
 currency code is not valid and the amount is not converted and it will be equal to ``0``.
 
-* <b>amount: </b> Converted amount
+* amount: Converted amount
 
-* <b>from: </b> Currency code from which the amount is converted.
-* <b>to: </b> Currency code to which the amount is converted.
+* from: Currency code from which the amount is converted.
+* to: Currency code to which the amount is converted.
 
