@@ -1,4 +1,4 @@
-#Google currency
+# Google currency
 
 A very simple currency converter.
 
@@ -7,14 +7,14 @@ It can convert the currency of <b>153 codes.</b>
 Since the results are fetched from ``Google`` directly, you can trust the results :-D
 
 
-#Installation
+# Installation
 
 To install the library run the below command (This will also install ``requests``)
 
 *  ``pip install google-currency``
 
 
-#Usage
+# Usage
 ``from google_currency import convert``
 
 ``convert('usd', 'inr', 1)``
