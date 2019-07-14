@@ -1,0 +1,56 @@
+Metadata-Version: 1.1
+Name: google-currency
+Version: 1.0.3
+Summary: A simple library to convert the currency of one country to other, it supports 153 countries' currency
+Home-page: https://github.com/om06/google-currency
+Author: Hariom Tiwari
+Author-email: hariom.tiwari.006@gmail.com
+License: UNKNOWN
+Description: #Google currency
+        
+        A very simple currency converter.
+        
+        It can convert the currency of <b>153 codes.</b>
+        
+        Since the results are fetched from ``Google`` directly, you can trust the results :-D
+        
+        
+        <h3>Installation</h3>
+        
+        To install the library run the below command (This will also install ``requests``)
+        
+        *  ``pip install google-currency``
+        
+        
+        <h3>Usage</h3>
+        ``from google_currency import convert``
+        
+        ``convert('usd', 'inr', 1)``
+        
+        This will return a JSON response like below
+        
+        {
+        
+            "converted": true,
+            "from": "USD",
+            "to": "INR",
+            "amount": "68.56"
+        }
+        
+        
+        <b>Response description</b>
+        
+        * <b>converted: </b> Boolean indicating whether the amount is converted or not, if this is ``false`` than it means the
+        currency code is not valid and the amount is not converted and it will be equal to ``0``.
+        
+        * <b>amount: </b> Converted amount
+        
+        * <b>from: </b> Currency code from which the amount is converted.
+        * <b>to: </b> Currency code to which the amount is converted.
+        
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Developers

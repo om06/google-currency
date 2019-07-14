@@ -1,0 +1,8 @@
+# Local development files and directories
+
+env/
+demo/
+
+# IDE configuration
+
+.idea/

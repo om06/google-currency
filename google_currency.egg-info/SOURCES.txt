@@ -1,0 +1,8 @@
+README.rst
+setup.py
+google_currency/__init__.py
+google_currency.egg-info/PKG-INFO
+google_currency.egg-info/SOURCES.txt
+google_currency.egg-info/dependency_links.txt
+google_currency.egg-info/requires.txt
+google_currency.egg-info/top_level.txt
