@@ -174,7 +174,20 @@ def convert(currency_from, currency_to, amnt):
     :param amnt: Amount which needs to be converted
     :return: Json
     """
-    url = "https://www.google.com/search?q=convert+{amount}+{frm}+to+{to}".format(amount = str(amnt),
+    # Validate the parameters
+    if not isinstance(currency_from, str):
+        raise TypeError("currency_from should be of type str, passed %s" % type(currency_from))
+
+    if not isinstance(currency_to, str):
+        raise TypeError("currency_to should be of type str, passed %s" % type(currency_to))
+
+    if not isinstance(amnt, float) and not isinstance(amnt, int):
+        raise TypeError("amount should be either int or float, passed %s" % type(amnt))
+
+    # url = "https://www.google.com/search?q=convert+{amount}+{frm}+to+{to}".format(amount = str(amnt),
+    #                                                                               frm    = currency_from,
+    #                                                                               to     = currency_to)
+    url = "http://216.58.221.46/search?q=convert+{amount}+{frm}+to+{to}".format(amount = str(amnt),
                                                                                   frm    = currency_from,
                                                                                   to     = currency_to)
     currency_from = currency_from.upper()
@@ -194,20 +207,40 @@ def convert(currency_from, currency_to, amnt):
         # Just to check whether this currency exists in out currency code base or not
         currency_from_name = CODES[currency_from]
 
-        response = requests.get(url)
+        # If currency_to_name and currency_from_name is same then user is just trying to convert the same currency and
+        # we need to return the same value
+
+        if currency_to_name == currency_from_name:
+            default_response["converted"] = True
+            default_response["amount"]    = float(amnt)
+            return json.dumps(default_response)
+
+        # response = requests.get(url)
+        response = requests.get(url, headers={"Range": "bytes=0-1"})
 
         html = response.text
 
         results = re.findall("\d+.\d+ {currency_to_name}".format(currency_to_name=currency_to_name), html)
 
-        converted_amount_str = "0.0 {to}".format(to=currency_to)
+        # converted_amount_str = "0.0 {to}".format(to=currency_to)
         if results.__len__() > 0:
             converted_amount_str = results[0]
-        converted_currency = re.findall('\d+.\d+', converted_amount_str)[0]
+            converted_currency = re.findall('\d+.\d+', converted_amount_str)[0]
 
-        default_response["amount"]    = converted_currency
-        default_response["converted"] = True
+            default_response["amount"]    = converted_currency
+            default_response["converted"] = True
+            return json.dumps(default_response)
+        else:
+            raise Exception("Unable to convert currency, failed to fetch results from Google")
 
-    except KeyError:
-        logger.error("Invalid currency codes passed in parameters")
-    return json.dumps(default_response)
+    except KeyError as error:
+        logger.error("Invalid currency codes passed in parameters, original exception message is -> %s" % error)
+
+    except TypeError as error:
+        logger.error(error)
+
+    except Exception as error:
+        logger.error(error)
+
+    finally:
+        return json.dumps(default_response)
