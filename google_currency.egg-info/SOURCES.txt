@@ -1,4 +1,4 @@
-README.rst
+README.md
 setup.py
 google_currency/__init__.py
 google_currency.egg-info/PKG-INFO

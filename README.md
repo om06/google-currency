@@ -1,5 +1,9 @@
 # Google currency  
-  
+
+**Disclaimer:** This package fetch the result from Google using web scrapping. 
+Owner will not be responsible for any misuse of this package. This is solely for 
+the purpose of learning.   
+
 A very simple currency converter.  
   
 It can convert the currency of **153 codes.**  
