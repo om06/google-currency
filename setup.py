@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='google_currency',
-    version='1.0.5',
+    version='1.0.6',
     packages=['google_currency'],
     author="Hariom Tiwari",
     author_email="hariom.tiwari.006@gmail.com",

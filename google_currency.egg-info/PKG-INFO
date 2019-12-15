@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: google-currency
-Version: 1.0.5
+Version: 1.0.6
 Summary: A simple library to convert the currency of one country to other, it supports 153 countries' currency
 Home-page: https://github.com/om06/google-currency
 Author: Hariom Tiwari
