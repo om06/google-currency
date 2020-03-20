@@ -218,12 +218,12 @@ def convert(currency_from, currency_to, amnt):
 
         html = response.text
 
-        results = re.findall("\d+.\d+ {currency_to_name}".format(currency_to_name=currency_to_name), html)
+        results = re.findall("[\d*\,]*\.\d* {currency_to_name}".format(currency_to_name=currency_to_name), html)
 
         # converted_amount_str = "0.0 {to}".format(to=currency_to)
         if results.__len__() > 0:
             converted_amount_str = results[0]
-            converted_currency = re.findall('\d+.\d+', converted_amount_str)[0]
+            converted_currency = re.findall('[\d*\,]*\.\d*', converted_amount_str)[0]
 
             default_response["amount"]    = converted_currency
             default_response["converted"] = True
