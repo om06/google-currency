@@ -21,8 +21,12 @@ To install the library run the below command (This will also install ``requests`
 ## Usage  
 ```  
 from google_currency import convert  
-  
-convert('usd', 'inr', 1)  
+
+# Converted without comma like 70000.00 
+convert('usd', 'inr', 1000) 
+
+# Converted amount with comma like 70,000.00
+convert('usd', 'inr', 1000)
 ```  
   
 This will return a JSON response like below  
@@ -32,8 +36,15 @@ This will return a JSON response like below
 	 "converted": true, 
 	 "from": "USD", 
 	 "to": "INR", 
-	 "amount": "68.56"
- }  
+	 "amount": "74876.00"
+}
+
+{  
+	 "converted": true, 
+	 "from": "USD", 
+	 "to": "INR", 
+	 "amount": "74,876.00"
+}    
 ```  
   
   

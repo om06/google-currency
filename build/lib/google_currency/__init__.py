@@ -166,12 +166,14 @@ CODES = {
 }
 
 
-def convert(currency_from, currency_to, amnt):
+def convert(currency_from, currency_to, amnt, replace_commas=True):
     """
     Used to convert amount from one currency to another
     :param currency_from: Currency code from which amount needs to be converted
     :param currency_to: Currency code in which amount needs to be converted to
     :param amnt: Amount which needs to be converted
+    :param replace_commas: If True than the commas will be removed from converted amount and the converted amount will
+        be like 70000 otherwise it will return with comma like 70,000
     :return: Json
     """
     # Validate the parameters
@@ -218,12 +220,15 @@ def convert(currency_from, currency_to, amnt):
 
         html = response.text
 
-        results = re.findall("\d+.\d+ {currency_to_name}".format(currency_to_name=currency_to_name), html)
+        results = re.findall("[\d*\,]*\.\d* {currency_to_name}".format(currency_to_name=currency_to_name), html)
 
         # converted_amount_str = "0.0 {to}".format(to=currency_to)
         if results.__len__() > 0:
             converted_amount_str = results[0]
-            converted_currency = re.findall('\d+.\d+', converted_amount_str)[0]
+            converted_currency = re.findall('[\d*\,]*\.\d*', converted_amount_str)[0]
+
+            if replace_commas:
+                converted_currency = converted_currency.replace(',', '')
 
             default_response["amount"]    = converted_currency
             default_response["converted"] = True
