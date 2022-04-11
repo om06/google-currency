@@ -108,7 +108,7 @@ CODES = {
     "MZM": "Mozambican metical",
     "MZN": "Mozambican metical",
     "MMK": "Myanmar Kyat",
-    "TWD": "NT$",
+    "TWD": "New Taiwan dollar",
     "NAD": "Namibian dollar",
     "NPR": "Nepalese Rupee",
     "ANG": "Netherlands Antillean Guilder",
