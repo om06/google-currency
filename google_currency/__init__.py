@@ -193,7 +193,7 @@ def convert(currency_from, currency_to, amnt, replace_commas=True):
     if not isinstance(amnt, float) and not isinstance(amnt, int):
         raise TypeError("amount should be either int or float, passed %s" % type(amnt))
 
-    url = "http://216.58.221.46/search?q=convert+{amount}+{frm}+to+{to}&hl=en&lr=lang_en".format(amount = str(amnt),
+    url = "https://google.com/search?q=convert+{amount}+{frm}+to+{to}&hl=en&lr=lang_en".format(amount = str(amnt),
                                                                                                  frm    = currency_from,
                                                                                                  to     = currency_to)
 
