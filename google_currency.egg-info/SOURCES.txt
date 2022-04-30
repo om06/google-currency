@@ -1,3 +1,4 @@
+LICENSE
 README.md
 setup.py
 google_currency/__init__.py
