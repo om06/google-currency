@@ -254,3 +254,7 @@ def convert(currency_from, currency_to, amnt, replace_commas=True):
 
     finally:
         return json.dumps(default_response)
+
+
+# Reference to release the library:
+# https://towardsdatascience.com/how-to-upload-your-python-package-to-pypi-de1b363a1b3
