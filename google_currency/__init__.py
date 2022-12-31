@@ -3,7 +3,7 @@ import logging
 import json
 import re
 import requests
-
+import locale
 
 __author__ = "Hariom"
 
@@ -227,15 +227,18 @@ def convert(currency_from, currency_to, amnt, replace_commas=True):
 
         html = response.text
 
-        results = re.findall("[\d*\,]*\.\d* {currency_to_name}".format(currency_to_name=currency_to_name), html)
+        results = re.findall("\d[\d*\,\s\.]*[\.\,]\d* {currency_to_name}".format(currency_to_name=currency_to_name), html)
 
         # converted_amount_str = "0.0 {to}".format(to=currency_to)
         if results.__len__() > 0:
             converted_amount_str = results[0]
-            converted_currency = re.findall('[\d*\,]*\.\d*', converted_amount_str)[0]
+            converted_currency = re.findall('\d[\d*\,\s\.]*[\.\,]\d*', converted_amount_str)[0]
 
             if replace_commas:
                 converted_currency = converted_currency.replace(',', '')
+            else:
+                locale.setlocale(locale.LC_ALL, '')
+                converted_currency = locale.atof(converted_currency)
 
             default_response["amount"]    = converted_currency
             default_response["converted"] = True
