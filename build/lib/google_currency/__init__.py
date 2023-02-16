@@ -122,7 +122,7 @@ CODES = {
     "PGK": "Papua New Guinean Kina",
     "PYG": "Paraguayan Guarani",
     "PHP": "Philippine Piso",
-    "PLN": "Poland złoty",
+    "PLN": "Poland Złoty",
     "GBP": "Pound sterling",
     "QAR": "Qatari Rial",
     "ROL": "Romanian Leu",
